@@ -1,0 +1,217 @@
+
+
+<!-- Login-2 -->
+
+<!DOCTYPE html>
+<html>
+
+    <head> </head> <br><br>
+
+    <style>
+        body{
+            background-color: rgb(17, 1, 43);
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100hv;
+            margin-top: 100px;
+        }
+        details{
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 20px;
+            max-width: 400px;
+            width: 500px;
+        }
+        .div1{
+            margin-bottom: 8px;
+        }
+        label{
+            margin-bottom: 8px;
+            color: white;
+        }
+        input{
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+        }
+        button{
+        background-color: rgb(64, 99, 87);
+        color: white;
+        padding: 10px;
+        border: 2px;
+        width: 100px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 8px;
+        }
+        button:hover{
+            background-color:  rgb(24, 39, 34);
+            align-items: center;
+        }
+        textarea{
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+        }
+
+
+    </style>
+
+    <body>
+    
+                <form id="myForm">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" oninput="validateFirstName()">
+                    <span id="firstNameError" class="error"></span>
+                
+                    <br>
+                
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" oninput="validateLastName()">
+                    <span id="lastNameError" class="error"></span>
+                
+                    <br>
+                
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" oninput="validatePhone()">
+                    <span id="phoneError" class="error"></span>
+                
+                    <br>
+                
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" oninput="validateEmail()">
+                    <span id="emailError" class="error"></span>
+                
+                    <br>
+                
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address" oninput="validateAddress()"></textarea>
+                    <span id="addressError" class="error"></span>
+                
+                    <br>
+                
+                    <button type="button" onclick="submitForm()">Submit</button>
+                </form>
+
+            
+
+
+
+   
+
+    <script defer>
+
+function validateFirstName() {
+        var firstNameInput = document.getElementById("firstName");
+        var firstNameError = document.getElementById("firstNameError");
+        var firstNameValue = firstNameInput.value.trim();  // Remove leading and trailing whitespaces
+
+        // Regular expression for checking if the input contains only alphabets
+        var alphabetsOnlyRegex = /^[a-zA-Z]+$/;
+
+        if (firstNameValue === "") {
+            // If the input is empty
+            firstNameError.textContent = "First name is required.";
+        } else if (!alphabetsOnlyRegex.test(firstNameValue)) {
+            // If the input contains characters other than alphabets
+            firstNameError.textContent = "First name should contain only alphabets.";
+        } else {
+            // Valid input
+            firstNameError.textContent = "";
+        }
+    }
+
+    function validateLastName() {
+        var lastNameInput = document.getElementById("lastName");
+        var lastNameError = document.getElementById("lastNameError");
+        var lastNameValue = lastNameInput.value.trim();  // Remove leading and trailing whitespaces
+
+        // Regular expression for checking if the input contains only alphabets
+        var alphabetsOnlyRegex = /^[a-zA-Z]+$/;
+
+        if (lastNameValue === "") {
+            // If the input is empty
+            lastNameError.textContent = "Last name is required.";
+        } else if (!alphabetsOnlyRegex.test(lastNameValue)) {
+            // If the input contains characters other than alphabets
+            lastNameError.textContent = "Last name should contain only alphabets.";
+        } else {
+            // Valid input
+            lastNameError.textContent = "";
+        }
+    }
+
+  function validateEmail() {
+        var emailInput = document.getElementById("email");
+        var emailError = document.getElementById("emailError");
+        var emailValue = emailInput.value.trim();  // Remove leading and trailing whitespaces
+
+        // Regular expression for checking a valid email format
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailValue === "") {
+            // If the input is empty
+            emailError.textContent = "Email is required.";
+        } else if (!emailRegex.test(emailValue)) {
+            // If the input does not match the valid email format
+            emailError.textContent = "Enter a valid email address.";
+        } else  {
+            // Valid input
+            emailError.textContent = "";
+        }
+    }
+
+      function validatePhoneNumber() {
+        var phoneInput = document.getElementById("phone");
+        var phoneError = document.getElementById("phoneError");
+        var phoneValue = phoneInput.value.trim();  // Remove leading and trailing whitespaces
+
+        // Regular expression for checking a valid phone number format
+        var phoneRegex = /^\d{3}-?\d{3}-?\d{4}$/;
+
+        if (phoneValue === "") {
+            // If the input is empty
+            phoneError.textContent = "Phone number is required.";
+        } else if (!phoneRegex.test(phoneValue)) {
+            // If the input does not match the valid phone number format
+            phoneError.textContent = "Enter a valid phone number";
+        } else {
+            // Valid input
+            phoneError.textContent = "";
+        }
+    }
+
+    function submitForm() {
+        // Validation for all fields before submitting
+        var isFormValid = true;
+
+        // Perform individual field validations
+        validateFirstName();
+        validateLastName();
+        validatePhoneNumber();
+        validateEmail();
+        validateAddress();
+
+        // Check if all fields are valid
+        if (isFormValid) {
+            document.getElementById("submitMessage").textContent = "Submitted successfully!";
+        } else {
+            document.getElementById("submitMessage").textContent = "";  // Clear success message if not valid
+        }
+    }
+
+     </script>
+    </body>
+    </html>
+
+        
+
+    
+
+   
